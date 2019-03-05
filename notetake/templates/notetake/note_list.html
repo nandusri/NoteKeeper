@@ -4,7 +4,11 @@
 	<title>note taking app</title>
 </head>
 <body>
-	<h1>Hii there!</h1>
-	<h2>It works!</h2>
+	<div>
+	<h1><a href="/">Notes List</a></h1>
+	</div>
+	{% for note in notes %}
+		{{ note }}
+	{% endfor %}
 </body>
 </html>
