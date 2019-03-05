@@ -8,7 +8,12 @@
 	<h1><a href="/">Notes List</a></h1>
 	</div>
 	{% for note in notes %}
-		{{ note }}
+		<div>
+			<p>Created: {{ note.created_on }}</p>
+			<h2><a href="">{{ note.title }}</a></h2>
+			<p>{{ note.text }}</p>
+			<p>Updated: {{ note.updated_on|linebreaksbr }}</p>
+		</div>
 	{% endfor %}
 </body>
 </html>
