@@ -6,8 +6,8 @@ class Note(models.Model):
 	user = models.ForeignKey(settings.AUTH_USER_MODEL, on_delete=models.CASCADE)
 	title = models.CharField(max_length=200)
 	text = models.TextField()
-	created_on = models.DateTimeField(auto_now=True)
-	updated_on = models.DateTimeField(auto_now=False, auto_now_add=True)
+	created_on = models.DateTimeField(auto_now_add=True)
+	updated_on = models.DateTimeField(auto_now=True)
 
 	def __str__(self):
 		return self.title
