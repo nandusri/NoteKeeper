@@ -1,3 +1,4 @@
 from django.shortcuts import render
-
-# Create your views here.
+def note_list(request):
+	return render(request, 'notetake/note_list.html',{})
+	
