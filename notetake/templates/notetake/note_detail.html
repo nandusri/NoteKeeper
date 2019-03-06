@@ -1,0 +1,16 @@
+{% extends 'notetake/base.html' %}
+{% load humanize %}
+{% block content %}
+    <div class="note">
+        {% if note.created_on %}
+            <div class="date">
+                {{ note.created_on }}
+            </div>
+        {% endif %}
+        <h2>{{ note.title }}</h2>
+        <p>{{ note.text }}</p>
+        <div class="date">
+			<p>Updated: {{ note.updated_on|naturaltime|linebreaksbr }}</p>
+		</div>
+    </div>
+{% endblock %}
