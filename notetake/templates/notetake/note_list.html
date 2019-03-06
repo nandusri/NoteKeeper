@@ -1,18 +1,24 @@
+{% load static %}
+{% load humanize %}
 <!DOCTYPE html>
 <html>
 <head>
 	<title>note taking app</title>
+	<link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css">
+	<link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap-theme.min.css">
+	<link rel="stylesheet" type="text/css" href="{% static 'css/notetake.css' %}">
+	<link href="//fonts.googleapis.com/css?family=Lobster&subset=latin,latin-ext" rel="stylesheet" type="text/css">
 </head>
 <body>
-	<div>
+	<div class="page-header">
 	<h1><a href="/">Notes List</a></h1>
 	</div>
 	{% for note in notes %}
-		<div>
+		<div class="note">
 			<p>Created: {{ note.created_on }}</p>
 			<h2><a href="">{{ note.title }}</a></h2>
 			<p>{{ note.text }}</p>
-			<p>Updated: {{ note.updated_on|linebreaksbr }}</p>
+			<p>Updated: {{ note.updated_on|naturaltime|linebreaksbr }}</p>
 		</div>
 	{% endfor %}
 </body>
