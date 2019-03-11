@@ -23,13 +23,13 @@ def note_new(request):
 def note_edit(request, pk):
 	note = get_object_or_404(Note, pk=pk)
 	if request.method == "POST":
-		form = NoteForm(request.POST, instance=post)
+		form = NoteForm(request.POST, instance=note)
 		if form.is_valid():
 			note = form.save(commit=False)
 			note.user = request.user
 			note.save()
 			return redirect('note_detail', pk=note.pk)
 	else:
-		form = NoteForm(instance=post)
+		form = NoteForm(instance=note)
 	return render(request, 'notetake/note_edit.html', {'form': form})	
 		
