@@ -2,35 +2,9 @@
 
 {% block content %}
 	<h2>New Note</h2>
-	<form method="NOTE" class="note-new">{% csrf_token %}
-		
-		<section class="section">
-
-         <div class="columns">
-            <div class="column is-13 ">
-            	<div class="field">
-                  	<div class="control has-icons-left ">
-	                    <input class="input is-info" type="text" placeholder="Add title...">
-	                    <span class="icon is-small is-left">
-	                    <i class="fa fa-pencil"></i>
-	                    </span>
-                  	</div>
-               	</div>
-
-               	<div class="field">
-                  	<div class="control">
-                     	<textarea class="textarea is-info" type="text" rows="16" placeholder="Start typing here..."></textarea>
-                   	</div>
-               	</div>
-				<div class="field is-grouped">
-                  <div class="control">
-                     <button class="button is-medium is-link">Save</button>
-                  </div>
-               </div>
-
-            </div>
-		</div>
-	</section>
+	<form method="post" class="note-new">{% csrf_token %}
+		  {{ form.as_p }}
+	      <button type="submit" class="save btn btn-default">Save</button>	
 	</form>	
 
 {% endblock %}

@@ -7,6 +7,7 @@
                 {{ note.created_on }}
             </div>
         {% endif %}
+        <a class="btn btn-default" href="{% url 'note_edit' pk=note.pk %}"><span class="glyphicon glyphicon-pencil"></span></a>
         <h2>{{ note.title }}</h2>
         <p>{{ note.text }}</p>
         <div class="date">
