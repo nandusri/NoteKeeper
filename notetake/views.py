@@ -1,7 +1,9 @@
 from django.shortcuts import render, get_object_or_404, redirect
 from .models import Note
 from .forms import NoteForm
+from django.contrib.auth.forms import UserCreationForm
 from django.contrib.auth.decorators import login_required
+from django.contrib.auth import authenticate, login
 
 @login_required
 def note_list(request):
@@ -41,4 +43,18 @@ def note_delete(request, pk):
 	note = get_object_or_404(Note, pk=pk)
 	note.delete()
 	return redirect('note_list')
+def register(request):
+	if request.method == "POST":
+		form = UserCreationForm(request.POST)
 
+		if form.is_valid():
+			form.save()
+			username = form.cleaned_data['username']
+			password = form.cleaned_data['password1']
+			user = authenticate(username=username, password=password)
+			login(request, user)
+			return redirect('note_list')
+	else:
+		form = UserCreationForm()			
+	context = {'form' : form}	
+	return render(request, 'registration/register.html', context)
