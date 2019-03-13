@@ -1,6 +1,10 @@
 {% extends 'notetake/base.html' %}
 {% load humanize %}
 {% block content %}
+<div class="page-header">
+        <a href="{% url 'note_new' %}" class="top-menu"><span class="glyphicon glyphicon-plus"></span></a>
+        <h1><a href="/">Notes Lists</a></h1>
+</div>
 	{% for note in notes %}
 		<div class="note">
 			<div class="date">

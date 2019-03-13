@@ -8,12 +8,10 @@
     <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap-theme.min.css">
 	<link rel="stylesheet" type="text/css" href="{% static 'css/notetake.css' %}">
 	<link href="//fonts.googleapis.com/css?family=Lobster&subset=latin,latin-ext" rel="stylesheet" type="text/css">
+    {% block stylesheet %}
+    {% endblock %}
 </head>
 <body>
-    <div class="page-header">
-        <a href="{% url 'note_new' %}" class="top-menu"><span class="glyphicon glyphicon-plus"></span></a>
-        <h1><a href="/">Notes Lists</a></h1>
-    </div>
     <div class="content container">
         <div class="row">
             <div class="col-md-8">
@@ -22,5 +20,7 @@
             </div>
         </div>
     </div>
+    {% block javascript %}
+    {% endblock %}
 </body>
 </html>
