@@ -1,9 +1,6 @@
-<!DOCTYPE html>
-<html>
-<head>
-	<title>Register</title>
-</head>
-<body>
+{% extends 'notetake/base.html' %}
+{% load crispy_forms_tags %}
+{% block content %}
 	
 	<form method="post" action="{% url 'register' %}">{% csrf_token %}
 		
@@ -11,12 +8,11 @@
     		<p>There are errors in the form!</p>
     	{% endif %}
     	
-    	{{ form }}
+    	{{ form|crispy }}
 
-    	<input type="submit" value="Register">
-	</form>
-</body>
-</html>
+    	<button type="submit" class="btn btn-primary">Sign up</button>
+{% endblock %}
+
 
 
 

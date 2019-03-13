@@ -1,20 +1,15 @@
-<!DOCTYPE html>
-<!DOCTYPE html>
-<html>
-<head>
-    <title>Login</title>
-</head>
-<body>
+{% extends 'notetake/base.html' %}
+{% load crispy_forms_tags %}
+{% block content %}
     {% if form.errors %}
     <p>There is something wrong with what you entered!</p>
     {% endif %}
     
     <form method="post" action="{% url 'login' %}">{% csrf_token %}
-       <p>UserName: {{ form.username }}</p>
-       <p>Password: {{ form.password }}</p>
-        
-        <p><input type="submit" value="login"></p>
-        <input type="hidden" name="next" value="{{ next }}">
+       {{form.username|as_crispy_field }}
+       {{ form.password|as_crispy_field }}
+       
+       <button type="submit" class="btn btn-primary">Sign in</button> 
+       <input type="hidden" name="next" value="{{ next }}">
     </form>
-</body>
-</html>
+{% endblock %}

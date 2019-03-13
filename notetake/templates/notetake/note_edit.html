@@ -1,9 +1,9 @@
 {% extends 'notetake/base.html' %}
-
+{% load crispy_forms_tags %}
 {% block content %}
 	<h2>New Note</h2>
 	<form method="post" class="note-new">{% csrf_token %}
-		  {{ form.as_p }}
+		  {{ form|crispy }}
 	      <button type="submit" class="save btn btn-default">Save</button>	
 	</form>	
 
