@@ -3,17 +3,20 @@
 {% load humanize %}
 {% block content %}
     <div class="note">
+        <div class="page-header">
+            <a href="{% url 'logout' %}" class="top-menu"><button type="submit" class="btn btn-danger">Logout</button></a>
+            <h2>{{ note.title }}</h2>
+        </div>
+        <p>{{ note.get_content_as_markdown }}</p>
         {% if note.created_on %}
             <div class="date">
-                {{ note.created_on }}
+                <p>Created: {{ note.created_on }}</p>
             </div>
         {% endif %}
-        <a class="btn btn-default" href="{% url 'note_edit' pk=note.pk %}"><span class="glyphicon glyphicon-pencil"></span></a>
-        <a class="btn btn-default" href="{% url 'note_delete' pk=note.pk %}"><span class="glyphicon glyphicon-trash"</span></a>
-        <h2>{{ note.title }}</h2>
-        <p>{{ note.get_content_as_markdown }}</p>
         <div class="date">
 			<p>Updated: {{ note.updated_on|naturaltime|linebreaksbr }}</p>
 		</div>
+        <a class="btn btn-default" href="{% url 'note_edit' pk=note.pk %}"><span class="glyphicon glyphicon-pencil"></span></a>
+        <a class="btn btn-default" href="{% url 'note_delete' pk=note.pk %}"><span class="glyphicon glyphicon-trash"></span></a>
     </div>
 {% endblock %}
