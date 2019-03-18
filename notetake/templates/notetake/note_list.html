@@ -4,7 +4,7 @@
 <div class="page-header">
 		<a href="{% url 'logout' %}" class="top-menu"><span class="glyphicon glyphicon-log-out"></span></a>
         <a href="{% url 'note_new' %}" class="top-menu"><span class="glyphicon glyphicon-plus"></span></a>
-        <h1><a href="/">Notes Lists</a></h1>
+        <h1><a href="/">{{ user.username }}</a></h1>
 </div>
 	{% for note in notes %}
 		<div class="note">

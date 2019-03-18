@@ -5,8 +5,9 @@
     <div class="note">
         <div class="page-header">
             <a href="{% url 'logout' %}" class="top-menu"><span class="glyphicon glyphicon-log-out"></span></a>
-            <h2>{{ note.title }}</h2>
+            <h2>{{ user.username }}</h2>
         </div>
+        <h2>{{ note.title }}</h2>
         <p>{{ note.get_content_as_markdown }}</p>
         {% if note.created_on %}
         <div class="date">
