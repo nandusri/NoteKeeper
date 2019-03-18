@@ -2,7 +2,7 @@
 {% load humanize %}
 {% block content %}
 <div class="page-header">
-		<a href="{% url 'logout' %}" class="top-menu"><span class="glyphicon glyphicon-log-out"></span></a>
+		<a href="{% url 'login' %}" class="top-menu"><span class="glyphicon glyphicon-log-out"></span></a>
         <a href="{% url 'note_new' %}" class="top-menu"><span class="glyphicon glyphicon-plus"></span></a>
         <h1><a href="/">{{ user.username }}</a></h1>
 </div>
@@ -11,7 +11,7 @@
 			<h2><a href="{% url 'note_detail' pk=note.pk %}">{{ note.title }}</a></h2>
 			<p>{{ note.text }}</p>
 			<div class="date">
-			<p>Created: {{ note.created_on }} 
+			<p>Created: {{ note.created_on|naturaltime }} 
 			Updated: {{ note.updated_on|naturaltime|linebreaksbr }}</p></div>
 			</div>
 			<hr>

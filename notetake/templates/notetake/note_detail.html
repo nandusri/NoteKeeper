@@ -5,20 +5,23 @@
     <div class="note">
         <div class="page-header">
             <a href="{% url 'logout' %}" class="top-menu"><span class="glyphicon glyphicon-log-out"></span></a>
+            <a href="{% url 'note_list' %}" class="top-menu"><span class="glyphicon glyphicon-home"></span></a>
             <h2>{{ user.username }}</h2>
         </div>
-        <h2>{{ note.title }}</h2>
-        <p>{{ note.get_content_as_markdown }}</p>
-        {% if note.created_on %}
-        <div class="date">
-            <p>Created: {{ note.created_on }}</p>
+        <div class="card3">
+            <a class="btn btn-default" href="{% url 'note_edit' pk=note.pk %}"><span class="glyphicon glyphicon-pencil"></span></a>
+            <a class="btn btn-default" href="{% url 'note_delete' pk=note.pk %}"><span class="glyphicon glyphicon-trash"></span></a>
+            <h2>{{ note.title }}</h2>
+            <p>{{ note.get_content_as_markdown }}</p>
+            {% if note.created_on %}
+            <div class="date">
+                <p>Created: {{ note.created_on|naturaltime }}</p>
+            </div>
+            {% endif %}
+            <div class="date">
+    			<p>
+                Updated: {{ note.updated_on|naturaltime|linebreaksbr }}</p>
+    		</div>
         </div>
-        {% endif %}
-        <div class="date">
-			<p>
-            Updated: {{ note.updated_on|naturaltime|linebreaksbr }}</p>
-		</div>
-        <a class="btn btn-default" href="{% url 'note_edit' pk=note.pk %}"><span class="glyphicon glyphicon-pencil"></span></a>
-        <a class="btn btn-default" href="{% url 'note_delete' pk=note.pk %}"><span class="glyphicon glyphicon-trash"></span></a>
     </div>
 {% endblock %}
